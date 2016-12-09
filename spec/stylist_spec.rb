@@ -46,4 +46,18 @@ describe(Stylist) do
       expect(Stylist.find(@stylist2.id)).to eq @stylist2
     end
   end
+
+  # describe("#get_clients") do
+  #   it "will return the clients belonging to the stylist" do
+  #
+  #   end
+  # end
+
+  describe("#update") do
+    it "will update information about the stylist" do
+    @stylist.save
+    @stylist.update({:name => "Margot"})
+    expect(@stylist.name).to eq "Margot"
+    end
+  end
 end

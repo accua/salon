@@ -24,8 +24,13 @@ class Stylist
   end
 
   define_singleton_method(:find) do |id|
-    stylist = DB.exec("SELECT * FROM stylists WHERE id = #{id}")
+    stylist = DB.exec("SELECT * FROM stylists WHERE id = #{id};")
     name = stylist.first.fetch('name')
     Stylist.new({:name => name})
+  end
+
+  define_method(:update) do |attrs|
+    @name = attrs.fetch(:name)
+    DB.exec("UPDATE stylists SET name = '#{name}' WHERE id = #{id};")
   end
 end
