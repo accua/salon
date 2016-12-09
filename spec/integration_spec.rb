@@ -51,7 +51,7 @@ describe("The update stylist name path", {:type => :feature}) do
   end
 end
 
-describe("The delete stylist name path", {:type => :feature}) do
+describe("The delete stylist path", {:type => :feature}) do
   it("Clears the database of the selected stylist") do
     visit('/')
     fill_in('name', :with => "Jim")
@@ -60,5 +60,18 @@ describe("The delete stylist name path", {:type => :feature}) do
     click_on("mode_edit")
     click_on('Delete')
     expect(page).to have_content "There are no stylists yet!"
+  end
+end
+
+describe("The add client to stylist path", {:type => :feature}) do
+  it("Adds a client to a stylist") do
+    visit('/')
+    fill_in('name', :with => "Jim")
+    click_on("Add Stylist")
+    visit('/')
+    click_on("Jim")
+    fill_in('name', :with => "Chloe")
+    click_on('Add Client')
+    expect(page).to have_content "Chloe"
   end
 end
