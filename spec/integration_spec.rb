@@ -132,3 +132,18 @@ describe("The delete client path", {:type => :feature}) do
     expect(page).to have_content "There are no clients assigned to this stylist!"
   end
 end
+
+describe("The home path from the client page", {:type => :feature}) do
+  it("Takes the user back to the index page") do
+    visit('/')
+    fill_in('name', :with => "Jim")
+    click_on("Add Stylist")
+    visit('/')
+    click_on("Jim")
+    fill_in('name', :with => "Chloe")
+    click_on('Add Client')
+    click_on('Chloe')
+    click_on('Home')
+    expect(page).to have_content "Hair Salon"
+  end
+end
