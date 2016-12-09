@@ -75,3 +75,15 @@ describe("The add client to stylist path", {:type => :feature}) do
     expect(page).to have_content "Chloe"
   end
 end
+
+describe("The home path from the stylist page", {:type => :feature}) do
+  it("Takes the user home from the stylist page") do
+    visit('/')
+    fill_in('name', :with => "Jim")
+    click_on("Add Stylist")
+    visit('/')
+    click_on("Jim")
+    click_on("Home")
+    expect(page).to have_content "Jim"
+  end
+end
