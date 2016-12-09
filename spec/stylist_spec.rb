@@ -2,14 +2,14 @@ require('spec_helper')
 
 describe(Stylist) do
   before :each do
-    @stylist = Stylist.new({:name => "Felicia", :id => nil})
-    @stylist_same = Stylist.new({:name => "Felicia", :id => nil})
+    @stylist = Stylist.new({:name => "Amy", :id => nil})
+    @stylist_same = Stylist.new({:name => "Amy", :id => nil})
     @stylist2 = Stylist.new({:name => "Stacy", :id => nil})
   end
 
   describe("#initialize") do
     it('will return the name and id of the stylist') do
-      expect(@stylist.name).to eq "Felicia"
+      expect(@stylist.name).to eq "Amy"
     end
   end
 
@@ -25,7 +25,7 @@ describe(Stylist) do
 
   describe("#save") do
     it "will save the stylist entry to the database" do
-      @stylist = Stylist.new({:name => "Felicia"})
+      @stylist = Stylist.new({:name => "Amy"})
       @stylist.save
       expect(Stylist.all).to eq [@stylist]
     end
@@ -49,13 +49,13 @@ describe(Stylist) do
     it "will return the clients belonging to the stylist" do
            @stylist.save
            fk = @stylist.id
-           @client1 = Client.new({:name => "Margot", :list_id => fk})
-           @client2 = Client.new({:name => "Felicia", :list_id => nil})
-           @client3 = Client.new({:name => "Stacy", :list_id => fk})
-           @client1.save
-           @client2.save
-           @client3.save
-     expect(@learning_list.get_tasks).to eq [@task1, @task3]
+           @client4 = Client.new({:name => "Margot", :id => nil, :id_stylist => fk})
+           @client5 = Client.new({:name => "Amy", :id => nil, :id_stylist => 1})
+           @client6 = Client.new({:name => "Stacy", :id => nil, :id_stylist => fk})
+           @client4.save
+           @client5.save
+           @client6.save
+     expect(@stylist.get_clients).to eq [@client4, @client6]
    end
   end
 

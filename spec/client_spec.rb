@@ -25,7 +25,6 @@ describe(Client) do
 
   describe("#save") do
     it "will save the client entry to the database" do
-
       @client.save
       expect(Client.all).to eq [@client]
     end
