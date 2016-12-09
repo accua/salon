@@ -4,6 +4,7 @@ describe(Stylist) do
   before :each do
     @stylist = Stylist.new({:name => "Felicia", :id => nil})
     @stylist_same = Stylist.new({:name => "Felicia", :id => nil})
+    @stylist2 = Stylist.new({:name => "Stacy", :id => nil})
   end
 
   describe("#initialize") do
@@ -40,7 +41,9 @@ describe(Stylist) do
 
   describe(".find") do
     it "will return the stylist based on the id" do
-
+      @stylist.save
+      @stylist2.save
+      expect(Stylist.find(@stylist2.id)).to eq @stylist2
     end
   end
 end

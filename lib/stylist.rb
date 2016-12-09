@@ -15,7 +15,7 @@ class Stylist
 
   #rescue false might be necessary if .name method cannot be run on a string
   define_method(:==) do |other|
-    @name = other.name and @id = other.id
+    @name = other.name and @id = other.id and self.class == other.class
   end
 
   define_method(:save) do
@@ -23,7 +23,9 @@ class Stylist
     @id = result.first.fetch("id").to_i
   end
 
-  define_singleton_method(:find) do
-    result = DB.exec("SELECT * FROM stylists WHERE id = #{id}")
+  define_singleton_method(:find) do |id|
+    stylist = DB.exec("SELECT * FROM stylists WHERE id = #{id}")
+    name = stylist.first.fetch('name')
+    Stylist.new({:name => name})
   end
 end
