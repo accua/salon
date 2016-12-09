@@ -8,7 +8,7 @@ also_reload('lib/**/*.rb')
 if ENV['DATABASE_URL']
   DB = PG.connect(ENV['DATABASE_URL'])
 else
-  DB = PG.connect({:dbname => 'hair_salon_test'})
+  DB = PG.connect({:dbname => 'hair_salon'})
 end
 
 get("/") do
