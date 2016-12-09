@@ -1,0 +1,2 @@
+CREATE DATABASE hair_salon;
+CREATE TABLE (id serial PRIMARY)
