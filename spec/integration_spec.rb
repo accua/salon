@@ -26,3 +26,14 @@ describe("The clear stylist path", {:type => :feature}) do
     expect(page).to have_content "There are no stylists yet!"
   end
 end
+
+describe("The edit stylist path", {:type => :feature}) do
+  it("Takes the user to the edit stylist form") do
+    visit('/')
+    fill_in('name', :with => "Jim")
+    click_on("Add Stylist")
+    visit('/')
+    click_on("mode_edit")
+    expect(page).to have_content "Update Jim"
+  end
+end
