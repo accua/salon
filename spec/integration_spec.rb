@@ -101,3 +101,19 @@ describe("The edit client page", {:type => :feature}) do
     expect(page).to have_content "Update Chloe"
   end
 end
+
+describe("The update client path", {:type => :feature}) do
+  it("Updates the client name") do
+    visit('/')
+    fill_in('name', :with => "Jim")
+    click_on("Add Stylist")
+    visit('/')
+    click_on("Jim")
+    fill_in('name', :with => "Chloe")
+    click_on('Add Client')
+    click_on('Chloe')
+    fill_in('name', :with => "Josh")
+    click_on('Update')
+    expect(page).to have_content "Josh"
+  end
+end
