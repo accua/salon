@@ -6,7 +6,7 @@
 
 ## Specifications
 
-_This webapp is called "Hair Salon". The purpose of this application is to showcase my Ruby abilities up to this point in week 3 of the Ruby track at Epicodus.
+_This webapp is called "Hair Salon". The purpose of this application is to showcase my Ruby abilities up to this point in week 3 of the Ruby track at Epicodus._
 
 # _User Stories_
 
