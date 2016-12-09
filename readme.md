@@ -22,12 +22,12 @@ _This webapp is called "Hair Salon". The purpose of this application is to showc
 * _Run the command "bundle install" to install the required gems._
 * _Run the command "postgres" to instantiate the database software._
 * _Run the command "psql" in a new tab in terminal._
-* _Run these commands in terminal:
-    _CREATE DATABASE hair_salon;_
-    _\c hair_salon_
-    _CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);_
-    _CREATE TABLE clients (id serial PRIMARY KEY, name varchar, id_stylist int);_
-    _CREATE TABLE hair_salon_test WITH TEMPLATE hair_salon;_
+* _Run these commands in terminal:_
+    * _CREATE DATABASE hair_salon;_
+    * _\c hair_salon_
+    * _CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);_
+    * _CREATE TABLE clients (id serial PRIMARY KEY, name varchar, id_stylist int);_
+    * _CREATE TABLE hair_salon_test WITH TEMPLATE hair_salon;_
 * _Run the command "ruby app.rb" to host the app on sinatra._
 * _Access localhost:4567 in your web browser, and the app should appear._
 
