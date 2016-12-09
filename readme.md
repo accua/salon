@@ -31,9 +31,6 @@ _This webapp is called "Hair Salon". The purpose of this application is to showc
 * _Run the command "ruby app.rb" to host the app on sinatra._
 * _Access localhost:4567 in your web browser, and the app should appear._
 
-### OR
-* _[Go here](https://ancient-bayou-47703.herokuapp.com/)_
-
 ## Technologies Used
 
 _This webapp uses Ruby, Sinatra, materialize CSS, HTML5_
