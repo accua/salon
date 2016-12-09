@@ -60,4 +60,13 @@ describe(Stylist) do
     expect(@stylist.name).to eq "Margot"
     end
   end
+
+  describe("#delete") do
+    it "will delete a stylist entry from the database" do
+    @stylist.save
+    @stylist2.save
+    @stylist.delete
+    expect(Stylist.all).to eq [@stylist2]  
+    end
+  end
 end
