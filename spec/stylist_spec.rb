@@ -45,11 +45,19 @@ describe(Stylist) do
     end
   end
 
-  # describe("#get_clients") do
-  #   it "will return the clients belonging to the stylist" do
-  #
-  #   end
-  # end
+  describe("#get_clients") do
+    it "will return the clients belonging to the stylist" do
+           @stylist.save
+           fk = @stylist.id
+           @client1 = Client.new({:name => "Margot", :list_id => fk})
+           @client2 = Client.new({:name => "Felicia", :list_id => nil})
+           @client3 = Client.new({:name => "Stacy", :list_id => fk})
+           @client1.save
+           @client2.save
+           @client3.save
+     expect(@learning_list.get_tasks).to eq [@task1, @task3]
+   end
+  end
 
   describe("#update") do
     it "will update information about the stylist" do
