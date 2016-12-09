@@ -47,16 +47,16 @@ describe(Stylist) do
 
   describe("#get_clients") do
     it "will return the clients belonging to the stylist" do
-           @stylist.save
-           fk = @stylist.id
-           @client4 = Client.new({:name => "Margot", :id => nil, :id_stylist => fk})
-           @client5 = Client.new({:name => "Amy", :id => nil, :id_stylist => 1})
-           @client6 = Client.new({:name => "Stacy", :id => nil, :id_stylist => fk})
-           @client4.save
-           @client5.save
-           @client6.save
-     expect(@stylist.get_clients).to eq [@client4, @client6]
-   end
+      @stylist.save
+      fk = @stylist.id
+      @client4 = Client.new({:name => "Margot", :id => nil, :id_stylist => fk})
+      @client5 = Client.new({:name => "Amy", :id => nil, :id_stylist => 1})
+      @client6 = Client.new({:name => "Stacy", :id => nil, :id_stylist => fk})
+      @client4.save
+      @client5.save
+      @client6.save
+      expect(@stylist.get_clients).to eq [@client4, @client6]
+    end
   end
 
   describe("#update") do
@@ -68,11 +68,21 @@ describe(Stylist) do
   end
 
   describe("#delete") do
-    it "will delete a stylist entry from the database" do
-    @stylist.save
-    @stylist2.save
-    @stylist.delete
-    expect(Stylist.all).to eq [@stylist2]
+    it "will delete a stylist from the database" do
+      @stylist.save
+      @stylist2.save
+      @stylist.delete
+      expect(Stylist.all).to eq [@stylist2]
+    end
+    it "will delete all assigned clients along with the stylist" do
+      @stylist.save
+      fk = @stylist.id
+      client = Client.new({:name => "John", :id_stylist => fk})
+      client.save
+      client2 = Client.new({:name => "Jim", :id_stylist => fk})
+      client2.save
+      @stylist.delete
+      expect(Client.all).to eq []
     end
   end
 end

@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Update <%= @stylist.name %></h1>
+  <div class="row">
+    <div class="col-sm-4">
+      <form action="/stylists/<%= @stylist.id %>" method="post">
+        <input type="hidden" name="_method" value="patch">
+
+        <input type="text" name="name" placeholder="Update Stylist Name">
+
+        <button class = "btn waves-effect waves-light" type="submit">Update!</button>
+
+      </form>
+    </div>
+  </div>
+</div>

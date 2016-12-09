@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h1><%= @stylist.name %></h1>
+
+      <% if @stylist.get_clients.any? %>
+
+        <ul>
+          <% @stylist.get_clients.each do |client| %>
+            <li><a href="/client/<%= client.id %>"><%= client.name %></a></li>
+          <% end %>
+        </ul>
+
+      <% else %>
+        <p>There are no clients assigned to this stylist!</p>
+      <% end %>
+
+    </div>
+    <div class="col-sm-4">
+      <form action="/stylist/:id/clients" method="post">
+        <div class="form-group">
+          <input name="id_stylist" type="hidden" value="<%= @stylist.id %>">
+          <input name="name" type="text" placeholder="Client Name" autofocus required>
+          <button class="btn" type="submit">Add Client</button>
+          <br><br>
+          <a href="/" class="btn">Home</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
