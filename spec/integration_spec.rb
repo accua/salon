@@ -12,3 +12,17 @@ describe("The add stylist path", {:type => :feature}) do
     expect(page).to have_content "Jim"
   end
 end
+
+describe("The clear stylist path", {:type => :feature}) do
+  it("Clears the database") do
+    visit('/')
+    fill_in('name', :with => "Jim")
+    click_on("Add Stylist")
+    visit('/')
+    fill_in('name', :with => "John")
+    click_on("Add Stylist")
+    visit('/')
+    click_on("Clear Stylists")
+    expect(page).to have_content "There are no stylists yet!"
+  end
+end
