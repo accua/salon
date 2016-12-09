@@ -37,3 +37,16 @@ describe("The edit stylist path", {:type => :feature}) do
     expect(page).to have_content "Update Jim"
   end
 end
+
+describe("The update stylist name path", {:type => :feature}) do
+  it("Clears the database") do
+    visit('/')
+    fill_in('name', :with => "Jim")
+    click_on("Add Stylist")
+    visit('/')
+    click_on("mode_edit")
+    fill_in('name', :with => "Susan")
+    click_on('Update')
+    expect(page).to have_content "Susan"
+  end
+end
