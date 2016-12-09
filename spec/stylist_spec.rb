@@ -33,8 +33,6 @@ describe(Stylist) do
 
   describe("#==") do
     it "will ensure that database entries are the same if they are of the same name" do
-      @stylist.save
-      @stylist_same.save
       expect(@stylist).to eq @stylist_same
     end
   end
@@ -66,7 +64,7 @@ describe(Stylist) do
     @stylist.save
     @stylist2.save
     @stylist.delete
-    expect(Stylist.all).to eq [@stylist2]  
+    expect(Stylist.all).to eq [@stylist2]
     end
   end
 end

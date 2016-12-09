@@ -9,13 +9,13 @@ class Stylist
   define_singleton_method(:all) do
     DB.exec('SELECT * FROM stylists;').map do |stylist|
       name = stylist.fetch("name")
-      Stylist.new({:name => name})
+      id = stylist.fetch("id").to_i
+      Stylist.new({:name => name, :id => id})
     end
   end
 
-  #rescue false might be necessary if .name method cannot be run on a string
   define_method(:==) do |other|
-    @name = other.name and @id = other.id and self.class == other.class
+    @name == other.name and @id == other.id #and self.class == other.class
   end
 
   define_method(:save) do
@@ -26,7 +26,8 @@ class Stylist
   define_singleton_method(:find) do |id|
     stylist = DB.exec("SELECT * FROM stylists WHERE id = #{id};")
     name = stylist.first.fetch('name')
-    Stylist.new({:name => name})
+    id = stylist.first.fetch('id').to_i
+    Stylist.new({:name => name, :id => id})
   end
 
   define_method(:update) do |attrs|
