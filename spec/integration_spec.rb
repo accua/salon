@@ -117,3 +117,18 @@ describe("The update client path", {:type => :feature}) do
     expect(page).to have_content "Josh"
   end
 end
+
+describe("The delete client path", {:type => :feature}) do
+  it("Deletes the client from the database") do
+    visit('/')
+    fill_in('name', :with => "Jim")
+    click_on("Add Stylist")
+    visit('/')
+    click_on("Jim")
+    fill_in('name', :with => "Chloe")
+    click_on('Add Client')
+    click_on('Chloe')
+    click_on('Delete')
+    expect(page).to have_content "There are no clients assigned to this stylist!"
+  end
+end
