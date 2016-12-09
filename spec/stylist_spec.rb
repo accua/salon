@@ -2,8 +2,8 @@ require('spec_helper')
 
 describe(Stylist) do
   before :each do
-    @stylist = Stylist.new({:name => "Felicia"})
-    @stylist_same = Stylist.new({:name => "Felicia"})
+    @stylist = Stylist.new({:name => "Felicia", :id => nil})
+    @stylist_same = Stylist.new({:name => "Felicia", :id => nil})
   end
 
   describe("#initialize") do
@@ -35,6 +35,12 @@ describe(Stylist) do
       @stylist.save
       @stylist_same.save
       expect(@stylist).to eq @stylist_same
+    end
+  end
+
+  describe(".find") do
+    it "will return the stylist based on the id" do
+
     end
   end
 end

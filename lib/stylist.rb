@@ -22,4 +22,8 @@ class Stylist
     result = DB.exec("INSERT INTO stylists (name) VALUES ('#{@name}') RETURNING id;")
     @id = result.first.fetch("id").to_i
   end
+
+  define_singleton_method(:find) do
+    result = DB.exec("SELECT * FROM stylists WHERE id = #{id}")
+  end
 end
